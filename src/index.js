@@ -5,3 +5,8 @@ import chromeBoi from './data.js'
 import Matrix from './Matrix.js'
 
 ReactDOM.render(<Matrix values={chromeBoi} />, document.getElementById('root'));
+
+// ReactDOM.render(
+//   <Matrix values={chromeBoi.slice(0, 10)} />,
+//   document.getElementById('root')
+// );
