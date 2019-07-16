@@ -7,21 +7,35 @@ export default class Matrix extends Component {
 
   constructor() {
     super()
+    this.state = {
+      color: null
+    }
   }
 
   genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} />)
+    vals.map((val, idx) => <Cell key={idx} color={val} updateColor={this.updateColor}/>)
   )
 
   genMatrix = () => (
     this.props.values.map((rowVals, idx) => <div key={idx} className="row">{this.genRow(rowVals)}</div>)
   )
 
+  changeColor = (newColor) => {
+    this.setState({
+      color: newColor
+    })
+  }
+
+  updateColor = () => {
+    this.state.color
+  }
+
+
 
   render() {
     return (
       <div id="app">
-        <ColorSelector />
+        <ColorSelector changeColor={this.changeColor}/>
         <div id="matrix">
           {this.genMatrix()}
         </div>
@@ -34,3 +48,4 @@ export default class Matrix extends Component {
 Matrix.defaultProps = {
   values: chromeBoi
 }
+
